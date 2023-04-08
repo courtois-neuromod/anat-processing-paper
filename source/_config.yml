@@ -1,0 +1,21 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Stability of qMRI metrics
+logo: logo.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/courtois-neuromod/anat-processing-paper  # Online location of your book
+  path_to_book: source  # Optional path to your book, relative to the repository root
+  branch: main  # Which branch of the repository should be used when creating links (optional)
+
+only_build_toc_files: true
+
+execute:
+  timeout: 600
