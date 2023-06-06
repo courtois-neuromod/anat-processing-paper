@@ -5,7 +5,7 @@ tags:
   - longitudinal stability
   - relaxometry
   - myelin
-- open-source
+  - open-source
 authors:
   - name: Mathieu Boudreau
     orcid: 0000-0002-7726-4456
