@@ -1,22 +1,40 @@
 ---
-title: 'Gala: A Python package for galactic dynamics'
+title: 'Longitudinal stability of brain and spinal cord quantitative MRI measures'
 tags:
-  - Python
-  - astronomy
-  - dynamics
-  - galactic dynamics
-  - milky way
+  - quantitative MRI
+  - longitudinal stability
+  - relaxometry
+  - myelin
+- open-source
 authors:
-  - name: Adrian M. Price-Whelan
-    orcid: 0000-0000-0000-0000
-    equal-contrib: true
-    affiliation: "1, 2" # (Multiple affiliations must be quoted)
-  - name: Author Without ORCID
-    equal-contrib: true # (This is how you can denote equal contributions between multiple authors)
-    affiliation: 2
-  - name: Author with no affiliation
-    corresponding: true # (This is how to denote the corresponding author)
-    affiliation: 3
+  - name: Mathieu Boudreau
+    orcid: 0000-0002-7726-4456
+    corresponding: true
+    affiliation: 1
+  - name: Agah Karakuzu
+    orcid: 0000-0001-7283-271X
+    affiliation: 1
+  - name: Arnaud Boré
+    orcid: 0000-0002-4822-1211
+    affiliation: "2, 3"
+  - name: Basile Pinsard
+    orcid: 0000-0002-4391-3075
+    affiliation: "2, 3"
+  - name: Kiril Zelenkovski
+    orcid: 0000-0001-7993-7004
+    affiliation: 4
+  - name: Eva Alonso-Ortiz
+    orcid: 0000-0001-6590-7234
+    affiliation: "1, 5"
+  - name: Julie Boyle
+    orcid: 0000-0001-5927-221X
+    affiliation: "2, 3"
+  - name: Pierre Bellec
+    orcid: 0000-0002-9111-0699
+    affiliation: "2, 3, 6"
+  - name: Julien Cohen-Adad
+    orcid: 0000-0003-3662-9532
+    affiliation: "1, 3, 5, 7"
 affiliations:
  - name: Lyman Spitzer, Jr. Fellow, Princeton University, USA
    index: 1
