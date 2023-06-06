@@ -53,15 +53,7 @@ aas-journal: Astrophysical Journal <- The name of the AAS journal.
 
 # Summary
 
-The forces on stars, galaxies, and dark matter under external gravitational
-fields lead to the dynamical evolution of structures in the universe. The orbits
-of these bodies are therefore key to understanding the formation, history, and
-future state of galaxies. The field of "galactic dynamics," which aims to model
-the gravitating components of galaxies to study their structure and evolution,
-is now well-established, commonly taught, and frequently used in astronomy.
-Aside from toy problems and demonstrations, the majority of problems require
-efficient numerical tools, many of which require the same base code (e.g., for
-performing numerical orbit integration).
+Quantitative MRI (qMRI) offers improved specificity, accuracy, and stability compared to qualitative MRI. Longitudinal stability is crucial for reliable measurement of tissue properties in clinical studies. Our study, part of the Courtois project on neural modeling (CNeuroMod), presents initial data from scanning the brains and cervical spinal cords of six participants over several years. We collected three years of data, with up to ten sessions per participant, using qMRI imaging protocols including T1, magnetization transfer (MTR, MTsat), and diffusion. The coefficient of variation (COV) for T1/MTR/MTsat in whole-brain white matter (WM) ranged from 0.6% to 2.3% (intrasubject) and 0.4% to 3.5% (intersubject). For diffusion FA/MD/RD in the corpus callosum regions, the COV ranged from 0.6% to 1.3% (intrasubject) and 3.0% to 10.3% (intersubject). In the spine, the COV for measured spine WM cross-sectional area (CSA) varied between 2.3% and 4.5% (intrasubject) and 5.1% to 9.7% (intersubject) across C2 and C3 vertebral levels. For all qMRI metrics (T1, MTR, MTsat, FA, MD, RD), COVs ranged from 3.9% to 9.5% (intrasubject) and 4.0% to 8.4% (intersubject) across C2 and C5 vertebral levels in the spine. These findings demonstrate the stability of qMRI protocols in the brain and spinal cord, providing valuable insights for future longitudinal clinical studies.
 
 # Statement of need
 
