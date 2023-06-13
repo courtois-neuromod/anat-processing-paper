@@ -53,73 +53,23 @@ aas-journal: Astrophysical Journal <- The name of the AAS journal.
 
 # Summary
 
-Quantitative MRI (qMRI) offers improved specificity, accuracy, and stability compared to qualitative MRI. Longitudinal stability is crucial for reliable measurement of tissue properties in clinical studies. Our study, part of the Courtois project on neural modeling (CNeuroMod), presents initial data from scanning the brains and cervical spinal cords of six participants over several years. We collected three years of data, with up to ten sessions per participant, using qMRI imaging protocols including T1, magnetization transfer (MTR, MTsat), and diffusion. The coefficient of variation (COV) for T1/MTR/MTsat in whole-brain white matter (WM) ranged from 0.6% to 2.3% (intrasubject) and 0.4% to 3.5% (intersubject). For diffusion FA/MD/RD in the corpus callosum regions, the COV ranged from 0.6% to 1.3% (intrasubject) and 3.0% to 10.3% (intersubject). In the spine, the COV for measured spine WM cross-sectional area (CSA) varied between 2.3% and 4.5% (intrasubject) and 5.1% to 9.7% (intersubject) across C2 and C3 vertebral levels. For all qMRI metrics (T1, MTR, MTsat, FA, MD, RD), COVs ranged from 3.9% to 9.5% (intrasubject) and 4.0% to 8.4% (intersubject) across C2 and C5 vertebral levels in the spine. These findings demonstrate the stability of qMRI protocols in the brain and spinal cord, providing valuable insights for future longitudinal clinical studies.
 
-# Statement of need
+We present the initial data release of the Courtois project on neural modeling (CNeuroMod), with a specific focus on the quantitative MRI (qMRI) component. The primary objective of this study was to evaluate the longitudinal stability of qMRI measurements in both the brain and cervical spinal cord. 
 
-`Gala` is an Astropy-affiliated Python package for galactic dynamics. Python
-enables wrapping low-level languages (e.g., C) for speed without losing
-flexibility or ease-of-use in the user-interface. The API for `Gala` was
-designed to provide a class-based and user-friendly interface to fast (C or
-Cython-optimized) implementations of common operations such as gravitational
-potential and force evaluation, orbit integration, dynamical transformations,
-and chaos indicators for nonlinear dynamics. `Gala` also relies heavily on and
-interfaces well with the implementations of physical units and astronomical
-coordinate systems in the `Astropy` package [@astropy] (`astropy.units` and
-`astropy.coordinates`).
+To achieve this, we conducted regular scanning sessions over a three-year period involving six participants \autoref{fig:figure1}. Each participant underwent up to ten sessions, providing us with a robust dataset. Our brain qMRI imaging protocols consisted of T1, magnetization transfer (MTR, MTsat), and diffusion techniques. In addition to these, the spinal cord imaging protocol included T1w, T2w, and T2\*w cross-sectional area (CSA) measurements.
 
-`Gala` was designed to be used by both astronomical researchers and by
-students in courses on gravitational dynamics or astronomy. It has already been
-used in a number of scientific publications [@Pearson:2017] and has also been
-used in graduate courses on Galactic dynamics to, e.g., provide interactive
-visualizations of textbook material [@Binney:2008]. The combination of speed,
-design, and support for Astropy functionality in `Gala` will enable exciting
-scientific explorations of forthcoming data releases from the *Gaia* mission
-[@gaia] by students and experts alike.
+The results of our study demonstrate the stability of the qMRI protocols used for both the brain and spinal cord. These findings offer valuable insights for the design of future longitudinal clinical studies in this domain. Furthermore, we have developed reproducible and reusable analysis pipelines for structural qMRI of the brain and spinal cord. These pipelines incorporate cutting-edge tools such as FSL, ANTs, qMRLab, and SCT, ensuring robust and accurate analysis.
 
-# Mathematics
+To enhance the accessibility and dissemination of our work, we have presented our findings as an interactive article using Jupyter Book and Plotly. This format allows for seamless exploration and sharing of the curated findings within an integrated research object. We believe that this approach will facilitate collaboration and encourage further research in the field of qMRI analysis.
 
-Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
+Overall, the initial data release of the Courtois project on neural modeling (CNeuroMod), specifically focusing on the quantitative MRI (qMRI) component, provides a significant contribution to the understanding of the longitudinal stability of qMRI measurements in the brain and spinal cord. The study offers valuable insights for future longitudinal clinical studies and establishes reproducible analysis pipelines for structural qMRI. The interactive article format ensures easy accessibility and encourages collaboration among researchers.
 
-Double dollars make self-standing equations:
-
-$$\Theta(x) = \left\{\begin{array}{l}
-0\textrm{ if } x < 0\cr
-1\textrm{ else}
-\end{array}\right.$$
-
-You can also use plain \LaTeX for equations
-\begin{equation}\label{eq:fourier}
-\hat f(\omega) = \int_{-\infty}^{\infty} f(x) e^{i\omega x} dx
-\end{equation}
-and refer to \autoref{eq:fourier} from text.
-
-# Citations
-
-Citations to entries in paper.bib should be in
-[rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
-format.
-
-If you want to cite a software repository URL (e.g. something on GitHub without a preferred
-citation) then you can do it with the example BibTeX entry below for @fidgit.
-
-For a quick reference, the following citation commands can be used:
-- `@author:2001`  ->  "Author et al. (2001)"
-- `[@author:2001]` -> "(Author et al., 2001)"
-- `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
 
 # Figures
 
-Figures can be included like this:
-![Caption for example figure.\label{fig:example}](figure.png)
-and referenced from text using \autoref{fig:example}.
-
 Figure sizes can be customized by adding an optional second parameter:
-![Caption for example figure.](figure.png){ width=20% }
+![Overview of the structural dataset for the Courtois project on neural modelling (CNeuroMod). 6 participants were scanned up to ten times over three years; note that this is an initial data release for 2022, and more scans are regularly being acquired. The structural protocol consists of T1w, T2w and T2\*w scans to quantify brain and SC (including grey matter, GM) morphometry, and MP2RAGE, magnetization transfer (MTR and MTsat), and diffusion-weighted sequences to compute metrics sensitive to demyelination in the white matter (WM).\label{fig:figure1}](figure1.png){ width=80% }
 
 # Acknowledgements
 
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
-Oh, and support from Kathryn Johnston during the genesis of this project.
-
-# References
+The Courtois project on neural modelling was made possible by a generous donation from the Courtois foundation. The Courtois NeuroMod team is based at “Centre de Recherche de l’Institut Universitaire de Gériatrie de Montréal”, with several other institutions involved. See the CNeuromod documentation for an up-to-date list of contributors (https://docs.cneuromod.ca). This study was also funded by the Canada Research Chair in Quantitative Magnetic Resonance Imaging [950-230815], the Canadian Institute of Health Research [CIHR FDN-143263], the Canada Foundation for Innovation [32454, 34824], the Fonds de Recherche du Québec - Santé [322736], the Natural Sciences and Engineering Research Council of Canada [RGPIN-2019-07244], the Canada First Research Excellence Fund (IVADO and TransMedTech), and the Mila - Tech Transfer Funding Program.
