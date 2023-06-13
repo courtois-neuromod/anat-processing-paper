@@ -1,5 +1,7 @@
 # Longitudinal stability of brain and spinal cord quantitative MRI measures
 
+[Link to interactive preprint](https://courtois-neuromod.github.io/anat-processing-paper/)
+
 We present the initial data release of the Courtois project on neural modeling (CNeuroMod), with a specific focus on the quantitative MRI (qMRI) component. The primary objective of this study was to evaluate the longitudinal stability of qMRI measurements in both the brain and cervical spinal cord. 
 
 To achieve this, we conducted regular scanning sessions over a three-year period involving six participants \autoref{fig:figure1}. Each participant underwent up to ten sessions, providing us with a robust dataset. Our brain qMRI imaging protocols consisted of T1, magnetization transfer (MTR, MTsat), and diffusion techniques. In addition to these, the spinal cord imaging protocol included T1w, T2w, and T2\*w cross-sectional area (CSA) measurements.
