@@ -67,7 +67,6 @@ Overall, the initial data release of the Courtois project on neural modeling (CN
 
 # Figures
 
-Figure sizes can be customized by adding an optional second parameter:
 ![Overview of the structural dataset for the Courtois project on neural modelling (CNeuroMod). 6 participants were scanned up to ten times over three years; note that this is an initial data release for 2022, and more scans are regularly being acquired. The structural protocol consists of T1w, T2w and T2\*w scans to quantify brain and SC (including grey matter, GM) morphometry, and MP2RAGE, magnetization transfer (MTR and MTsat), and diffusion-weighted sequences to compute metrics sensitive to demyelination in the white matter (WM).\label{fig:figure1}](figure1.png){ width=80% }
 
 # Acknowledgements
