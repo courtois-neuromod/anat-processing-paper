@@ -36,19 +36,22 @@ authors:
     orcid: 0000-0003-3662-9532
     affiliation: "1, 3, 5, 7"
 affiliations:
- - name: Lyman Spitzer, Jr. Fellow, Princeton University, USA
+ - name: NeuroPoly, Polytechnique Montreal, Montreal, QC, Canada
    index: 1
- - name: Institution Name, Country
+ - name: Centre de Recherche de l’Institut Universitaire de Gériatrie de Montréal (CRIUGM), Montreal, QC, Canada
    index: 2
- - name: Independent Researcher, Country
+ - name: Unité de Neuroimagerie Fonctionnelle (UNF), Centre de Recherche de l’Institut Universitaire de Gériatrie de Montréal (CRIUGM), Montreal, QC, Canada
    index: 3
-date: 13 August 2017
-bibliography: paper.bib
+ - name: Faculty of Computer Science and Engineering (FINKI), Skopje, Macedonia
+   index: 4
+ - name: Centre de recherche du CHU Sainte-Justine, Université de Montréal, Montreal, QC, Canada
+   index: 5
+ - name: Psychology Department, Université de Montréal, Montreal, QC, Canada
+   index: 6
+ - name: Mila - Quebec AI Institute, Montreal, QC, Canada
+   index: 7
+date: June 14 2023
 
-# Optional fields if submitting to a AAS journal too, see this blog post:
-# https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing
-aas-doi: 10.3847/xxxxx <- update this with the DOI from AAS once you know it.
-aas-journal: Astrophysical Journal <- The name of the AAS journal.
 ---
 
 # Summary
