@@ -27,6 +27,15 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r binder/requirements.txt
+    - name: Download data
+      run: |
+        cd content
+        repo2data -r ../binder/data_requirement.json
+        cd ..
+    - name: Postbuild
+      run: |
+        chmod +xxx binder/postBuild
+        binder/postBuild
     # Build the book
     - name: Build the book
       run: |

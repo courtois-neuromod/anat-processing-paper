@@ -1,0 +1,5 @@
+{ 
+    "src": "https://github.com/courtois-neuromod/anat-processing-paper/releases/download/v1.0.0/courtois-anat-neurolibre.zip",
+    "dst": "../../data",
+    "projectName": "courtois-anat-neurolibre"
+}
