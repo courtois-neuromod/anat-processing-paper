@@ -5,5 +5,5 @@ ls ..
 ls ../../
 ls ../data
 ls ../data/courtois-anat-neurolibre/
-find / -name "courtois-anat-neurolibre"
-cp -r ../data/courtois-anat-neurolibre/courtois-anat-neurolibre content/analysis/source/data
+ls /home/jovyan/data/
+cp -r  /home/jovyan/data/courtois-anat-neurolibre/courtois-anat-neurolibre content/analysis/source/data
