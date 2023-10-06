@@ -1,9 +1,2 @@
 #!/bin/bash
 git clone https://github.com/courtois-neuromod/anat-processing-book.git content/analysis
-ls .
-ls ..
-ls ../../
-ls ../data
-ls ../data/courtois-anat-neurolibre/
-ls /home/jovyan/data/
-cp -r  /home/jovyan/data/courtois-anat-neurolibre/courtois-anat-neurolibre content/analysis/source/data
