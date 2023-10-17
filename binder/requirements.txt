@@ -7,4 +7,4 @@ nibabel==3.2.2
 scipy
 markdown
 wget
-repo2data
+repo2data==2.9.1
