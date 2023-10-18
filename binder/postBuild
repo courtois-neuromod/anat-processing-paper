@@ -1,2 +1,2 @@
 #!/bin/bash
-git clone https://github.com/courtois-neuromod/anat-processing-book.git content/analysis
+git clone --depth=1 https://github.com/courtois-neuromod/anat-processing-book.git content/analysis

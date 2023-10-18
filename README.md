@@ -12,4 +12,4 @@ To enhance the accessibility and dissemination of our work, we have presented ou
 
 Overall, the initial data release of the Courtois project on neural modeling (CNeuroMod), specifically focusing on the quantitative MRI (qMRI) component, provides a significant contribution to the understanding of the longitudinal stability of qMRI measurements in the brain and spinal cord. The study offers valuable insights for future longitudinal clinical studies and establishes reproducible analysis pipelines for structural qMRI. The interactive article format ensures easy accessibility and encourages collaboration among researchers.
 
-![image](figure1.png)
+![image](featured.png)
