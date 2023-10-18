@@ -310,10 +310,12 @@ Average quantitative MRI (excluding diffusion) values for the segmented whole-br
 <span class="n">release_version</span> <span class="o">=</span> <span class="s1">&#39;latest&#39;</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_type</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">build</span> <span class="o">==</span> <span class="s1">&#39;latest&#39;</span><span class="p">:</span>
-    <span class="n">dataset</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">release_version</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">build</span> <span class="o">==</span> <span class="s1">&#39;archive&#39;</span><span class="p">:</span>
-    <span class="n">dataset</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;analysis/source/data/brain&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="n">data_type</span><span class="p">)</span>
+
+<span class="c1"># if build == &#39;latest&#39;:</span>
+<span class="c1">#     dataset.download(release_version)</span>
+<span class="c1"># elif build == &#39;archive&#39;:</span>
+<span class="c1">#     dataset.data_dir = Path(&#39;analysis/source/data/brain&#39;)</span>
 
 <span class="n">dataset</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
 <span class="n">fig_gm</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">plot_name</span> <span class="o">=</span> <span class="s1">&#39;brain-1&#39;</span><span class="p">)</span>
