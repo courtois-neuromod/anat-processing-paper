@@ -9,6 +9,9 @@ logo: logo.png
 execute:
   execute_notebooks: force
 
+launch_buttons:
+  notebook_interface: "jupyterlab"
+
 # Information about where the book exists on the web
 repository:
   url: https://github.com/courtois-neuromod/anat-processing-paper  # Online location of your book
@@ -19,3 +22,16 @@ only_build_toc_files: true
 
 execute:
   timeout: 600
+
+sphinx:
+  local_extensions          :   # A list of local extensions to load by sphinx specified by "name: path" items
+  recursive_update          : false # A boolean indicating whether to overwrite the Sphinx config (true) or recursively update
+  config                    :   # key-value pairs to directly over-ride the Sphinx configuration
+    bibtex_reference_style: author_year
+    bibtex_default_style: plain
+    bibtex_tooltips: true
+    html_static_path: ['_static']
+    html_css_files: ['custom.css']
+
+bibtex_bibfiles:
+  - ../paper.bib
