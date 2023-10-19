@@ -51,7 +51,7 @@ affiliations:
  - name: Mila - Quebec AI Institute, Montreal, QC, Canada
    index: 7
 date: June 14 2023
-
+bibliography: paper.bib
 ---
 
 # Summary
