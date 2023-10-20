@@ -2,7 +2,8 @@
   title = {Advanced Normalization Tools ({{ANTS}})},
   author = {{Avants} and {Tustison} and {Song}},
   year = {2009},
-  journal = {Insight J.}
+  journal = {Insight J.},
+  doi={10.54294/uvnhin}
 }
 
 @misc{Balbastre2022-dm,
@@ -11,7 +12,10 @@
   year = {2022},
   volume = {88},
   number = {1},
-  pages = {280--291}
+  pages = {280--291},
+  doi = {10.1002/mrm.29216},
+  journal = {Magn. Reson. Med.}
+
 }
 
 @article{Bautin2021-dt,
@@ -24,17 +28,19 @@
   pages = {102849},
   abstract = {Spinal cord atrophy is a well-known biomarker in multiple sclerosis (MS) and other diseases. It is measured by segmenting the spinal cord on an MRI image and computing the average cross-sectional area (CSA) over a few slices. Introduced about 25 years ago, this procedure is highly sensitive to the quality of the segmentation and is prone to rater-bias. Recently, fully-automated spinal cord segmentation methods, which remove the rater-bias and enable the automated analysis of large populations, have been introduced. A lingering question related to these automated methods is: How reliable are they at detecting atrophy? In this study, we evaluated the precision and accuracy of automated atrophy measurements by simulating scan-rescan experiments. Spinal cord MRI data from the open-access spine-generic project were used. The dataset aggregates 42 sites worldwide and consists of 260 healthy subjects and includes T1w and T2w contrasts. To simulate atrophy, each volume was globally rescaled at various scaling factors. Moreover, to simulate patient repositioning, random rigid transformations were applied. Using the DeepSeg algorithm from the Spinal Cord Toolbox, the spinal cord was segmented and vertebral levels were identified. Then, the average CSA between C3-C5 vertebral levels was computed for each Monte Carlo sample, allowing us to derive measures of atrophy, intra/inter-subject variability, and sample-size calculations. The minimum sample size required to detect an atrophy of 2\% between unpaired study arms, commonly seen in MS studies, was 467 +/- 13.9 using T1w and 467 +/- 3.2 using T2w images. The minimum sample size to detect a longitudinal atrophy (between paired study arms) of 0.8\% was 60 +/- 25.1 using T1w and 10 +/- 1.2 using T2w images. At the intra-subject level, the estimated CSA, observed in this study, showed good precision compared to other studies with COVs (across Monte Carlo transformations) of 0.8\% for T1w and 0.6\% for T2w images. While these sample sizes seem small, we would like to stress that these results correspond to a ``best case'' scenario, in that the dataset used here was of particularly good quality and the model for simulating atrophy does not encompass all the variability met in real-life datasets. The simulated atrophy and scan-rescan variability may over-simplify the biological reality. The proposed framework is open-source and available at https://csa-atrophy.readthedocs.io/.},
   langid = {english},
+  doi = {10.1016/j.nicl.2021.102849}
 }
 
 @article{Beg2021-ps,
-  title = {Using Jupyter for Reproducible Scientific Workflows},
-  author = {{Beg} and {Taka} and {Kluyver} and {Konovalov} and {Ragan-Kelley} and {Thiery} and {Fangohr}},
-  year = {2021},
-  month = mar,
-  journal = {https://www.computer.org \guilsinglright{} csdl \guilsinglright{} magazine \guilsinglright{} 2021/02https://www.computer.org \guilsinglright{} csdl \guilsinglright{} magazine \guilsinglright{} 2021/02},
-  volume = {23},
-  pages = {36--46},
-  abstract = {Literate computing has emerged as an important tool for computational studies and open science, with growing folklore of best practices. In this work, we report two case studies\textemdash one in computational magnetism and another in computational mathematics\textemdash where domain-specific software was exposed to the Jupyter environment. This enables high level control of simulations and computation, interactive exploration of computational results, batch processing on HPC resources, and reproducible workflow documentation in Jupyter notebooks. In the first study, Ubermag drives existing computational micromagnetics software through a domain-specific language embedded in Python. In the second study, a dedicated Jupyter kernel interfaces with the GAP system for computational discrete algebra and its dedicated programming language. In light of these case studies, we discuss the benefits of this approach, including progress toward more reproducible and reusable research results and outputs, notably through the use of infrastructure such as JupyterHub and Binder.}
+  title={Using Jupyter for reproducible scientific workflows},
+  author={Beg, Marijan and Taka, Juliette and Kluyver, Thomas and Konovalov, Alexander and Ragan-Kelley, Min and Thi{\'e}ry, Nicolas M and Fangohr, Hans},
+  journal={Computing in Science \& Engineering},
+  volume={23},
+  number={2},
+  pages={36--46},
+  year={2021},
+  publisher={IEEE},
+  doi = {10.1109/MCSE.2021.3052101}
 }
 
 @inproceedings{Boyle2020-ih,
@@ -272,7 +278,8 @@
   pages = {1--9},
   publisher = {{Nature Publishing Group}},
   abstract = {We present MRI data from a single human volunteer consisting in over 599 multi-contrast MR images (T1-weighted, T2-weighted, proton density, fluid-attenuated inversion recovery, T2* gradient-echo, diffusion, susceptibility-weighted, arterial-spin labelled, and resting state BOLD functional connectivity imaging) acquired in over 73 sessions on 36 different scanners (13 models, three manufacturers) over the course of 15+ years (cf. Data records). Data included planned data collection acquired within the Consortium pour l'identification pr\'ecoce de la maladie Alzheimer - Qu\'ebec (CIMA-Q) and Canadian Consortium on Neurodegeneration in Aging (CCNA) studies, as well as opportunistic data collection from various protocols. These multiple within- and between-centre scans over a substantial time course of a single, cognitively healthy volunteer can be useful to answer a number of methodological questions of interest to the community. Machine-accessible metadata file describing the reported data: https://doi.org/10.6084/m9.figshare.9925037},
-  langid = {english}
+  langid = {english},
+  doi = {10.1038/s41597-019-0262-8}
 }
 
 @article{DuPre2022-uf,
@@ -314,9 +321,11 @@
   title = {Dipy, a Library for the Analysis of Diffusion {{MRI}} Data},
   author = {Garyfallidis, Eleftherios and Brett, Matthew and Amirbekian, Bagrat and Rokem, Ariel and {van der Walt}, Stefan and Descoteaux, Maxime and {Nimmo-Smith}, Ian and {Dipy Contributors}},
   year = {2014},
+  doi={10.3389/fninf.2014.00008},
   month = feb,
   volume = {8},
   pages = {8},
+  journal={Frontiers in Neuroinformatics}, 
   abstract = {Diffusion Imaging in Python (Dipy) is a free and open source software project for the analysis of data from diffusion magnetic resonance imaging (dMRI) experiments. dMRI is an application of MRI that can be used to measure structural features of brain white matter. Many methods have been developed to use dMRI data to model the local configuration of white matter nerve fiber bundles and infer the trajectory of bundles connecting different parts of the brain. Dipy gathers implementations of many different methods in dMRI, including: diffusion signal pre-processing; reconstruction of diffusion distributions in individual voxels; fiber tractography and fiber track post-processing, analysis and visualization. Dipy aims to provide transparent implementations for all the different steps of dMRI analysis with a uniform programming interface. We have implemented classical signal reconstruction techniques, such as the diffusion tensor model and deterministic fiber tractography. In addition, cutting edge novel reconstruction techniques are implemented, such as constrained spherical deconvolution and diffusion spectrum imaging (DSI) with deconvolution, as well as methods for probabilistic tracking and original methods for tractography clustering. Many additional utility functions are provided to calculate various statistics, informative visualizations, as well as file-handling routines to assist in the development and use of novel techniques. In contrast to many other scientific software projects, Dipy is not being developed by a single research group. Rather, it is an open project that encourages contributions from any scientist/developer through GitHub and open discussions on the project mailing list. Consequently, Dipy today has an international team of contributors, spanning seven different academic institutions in five countries and three continents, which is still growing.},
   langid = {english},
   keywords = {diffusion MRI,dMRI,DSI,DTI,free open source software,HARDI,Python,tractography}
@@ -367,6 +376,7 @@
   number = {1},
   pages = {1--9},
   publisher = {{Nature Publishing Group}},
+  doi = {10.1038/sdata.2016.44},
   abstract = {The development of magnetic resonance imaging (MRI) techniques has defined modern neuroimaging. Since its inception, tens of thousands of studies using techniques such as functional MRI and diffusion weighted imaging have allowed for the non-invasive study of the brain. Despite the fact that MRI is routinely used to obtain data for neuroscience research, there has been no widely adopted standard for organizing and describing the data collected in an imaging experiment. This renders sharing and reusing data (within or between labs) difficult if not impossible and unnecessarily complicates the application of automatic pipelines and quality assurance protocols. To solve this problem, we have developed the Brain Imaging Data Structure (BIDS), a standard for organizing and describing MRI datasets. The BIDS standard uses file formats compatible with existing software, unifies the majority of practices already common in the field, and captures the metadata necessary for most common data processing operations.},
   langid = {english}
 }
@@ -392,6 +402,7 @@
   year = {2020},
   month = feb,
   journal = {Neuroimage},
+  doi = {10.1016/j.neuroimage.2019.116364},
   volume = {207},
   pages = {116364},
   abstract = {BACKGROUND: Quantitative MRI (qMRI) techniques allow assessing cerebral tissue properties. However, previous studies on the accuracy of quantitative T1 and T2 mapping reported a scanner model bias of up to 10\% for T1 and up to 23\% for T2. Such differences would render multi-centre qMRI studies difficult and raise fundamental questions about the general precision of qMRI. A problem in previous studies was that different methods were used for qMRI parameter mapping or for measuring the transmitted radio frequency field B1 which is critical for qMRI techniques requiring corrections for B1 non-uniformities. AIMS: The goal was to assess the intra- and inter-scanner reproducibility of qMRI data at 3 \hspace{0pt}T, using two different scanner models from the same vendor with exactly the same multiparametric acquisition protocol. METHODS: Proton density (PD), T1, T2* and T2 mapping was performed on healthy subjects and on a phantom, performing each measurement twice for each of two scanner models. Although the scanners had different hardware and software versions, identical imaging sequences were used for PD, T1 and T2* mapping, adapting the codes of an existing protocol on the older system line by line to match the software version of the newer scanner. For T2-mapping, the respective manufacturer's sequence was used which depended on the software version. However, system-dependent corrections were carried out in this case. Reproducibility was assessed by average values in regions of interest. RESULTS: Mean scan-rescan variations were not exceeding 2.14\%, with average values of 1.23\% and 1.56\% for the new and old system, respectively. Inter-scanner model deviations were not exceeding 5.21\% with average values of about 2.2-3.8\% for PD, 2.5-3.0\% for T2*, 1.6-3.1\% for T1 and 3.3-5.2\% for T2. CONCLUSIONS: Provided that identical acquisition sequences are used, discrepancies between qMRI data acquired with different scanner models are low. The level of systematic differences reported in this work may help to interpret multi-centre data.},
@@ -616,7 +627,8 @@
   volume = {8},
   pages = {100357},
   abstract = {BACKGROUND: Patients with transfusion dependent anemia are at risk of complications from iron overload. Quantitative T2* magnetic resonance imaging (MRI) is the best non-invasive method to assess iron deposition in the liver and heart and to guide chelation therapy. PURPOSE: To investigate the image quality and inter-observer variations in T2* measurements of the myocardium and the liver, and to obtain the lower limit of cardiac and hepatic quantitative T2* values in patients without suspicion of iron overload. MATERIAL AND METHODS: Thirty-eight patients referred for cardiac MRI were prospectively included in the study. Three patients were referred with, and 35 without suspicion of iron overload. Quantitative T2* parametric maps were obtained on a 1.5 T MRI system in the cardiac short axis and liver axial view. Two readers independently assessed the image quality and the representative and the lowest T2* value in the myocardium and the liver. RESULTS: The normal range of representative T2* values in the myocardium and liver was 24-45 ms and 14-37 ms, respectively. None of the 35 participants (0 \%, 95 \% confidence interval 0-11 \%) in the normal reference group demonstrated representative T2* values below previously reported lower limits in the myocardium (20 ms) or the liver (8 ms). Focal myocardial areas with T2* values near the lower normal range, 19-20 ms, were seen in two patients. The readers generally reported good image quality. CONCLUSION: T2* imaging for assessing iron overload can be performed in a non-dedicated center with sufficient image quality.},
-  langid = {english}
+  langid = {english},
+  doi = {10.1016/j.ejro.2021.100357}
 }
 
 @article{Ma2013-kv,
@@ -653,7 +665,7 @@
   author = {MacDonald, M Ethan and Pike, G Bruce},
   year = {2021},
   month = sep,
-  journal = {Nmr in Biomedicine},
+  journal = {NMR in Biomedicine},
   volume = {34},
   number = {9},
   pages = {e4564},
@@ -670,16 +682,19 @@
   journal = {Elife},
   volume = {9},
   abstract = {Several MRI measures have been proposed as in vivo biomarkers of myelin, each with applications ranging from plasticity to pathology. Despite the availability of these myelin-sensitive modalities, specificity and sensitivity have been a matter of discussion. Debate about which MRI measure is the most suitable for quantifying myelin is still ongoing. In this study, we performed a systematic review of published quantitative validation studies to clarify how different these measures are when compared to the underlying histology. We analyzed the results from 43 studies applying meta-analysis tools, controlling for study sample size and using interactive visualization (https://neurolibre.github.io/myelin-meta-analysis). We report the overall estimates and the prediction intervals for the coefficient of determination and find that MT and relaxometry-based measures exhibit the highest correlations with myelin content. We also show which measures are, and which measures are not statistically different regarding their relationship with histology.},
-  langid = {english}
+  langid = {english},
+  doi = {10.7554/eLife.61523}
 }
 
 @misc{Marques2010-po,
   title = {{{MP2RAGE}}, a Self Bias-Field Corrected Sequence for Improved Segmentation and {{T1-mapping}} at High Field},
   author = {Marques, Jos{\'e} P and Kober, Tobias and Krueger, Gunnar and {van der Zwaag}, Wietske and {Van de Moortele}, Pierre-Fran{\c c}ois and Gruetter, Rolf},
   year = {2010},
+  journal = {NeuroImage},
   volume = {49},
   number = {2},
-  pages = {1271--1281}
+  pages = {1271--1281},
+  doi = {10.1016/j.neuroimage.2009.10.002}
 }
 
 @article{Marques2013-yg,
@@ -735,7 +750,8 @@
   volume = {13},
   pages = {855125},
   abstract = {Neuroimaging studies often lack reproducibility, one of the cardinal features of the scientific method. Multisite collaboration initiatives increase sample size and limit methodological flexibility, therefore providing the foundation for increased statistical power and generalizable results. However, multisite collaborative initiatives are inherently limited by hardware, software, and pulse and sequence design heterogeneities of both clinical and preclinical MRI scanners and the lack of benchmark for acquisition protocols, data analysis, and data sharing. We present the overarching vision that yielded to the constitution of RIN-Neuroimaging Network, a national consortium dedicated to identifying disease and subject-specific in-vivo neuroimaging biomarkers of diverse neurological and neuropsychiatric conditions. This ambitious goal needs efforts toward increasing the diagnostic and prognostic power of advanced MRI data. To this aim, 23 Italian Scientific Institutes of Hospitalization and Care (IRCCS), with technological and clinical specialization in the neurological and neuroimaging field, have gathered together. Each IRCCS is equipped with high- or ultra-high field MRI scanners (i.e., {$\geq$}3T) for clinical or preclinical research or has established expertise in MRI data analysis and infrastructure. The actions of this Network were defined across several work packages (WP). A clinical work package (WP1) defined the guidelines for a minimum standard clinical qualitative MRI assessment for the main neurological diseases. Two neuroimaging technical work packages (WP2 and WP3, for clinical and preclinical scanners) established Standard Operative Procedures for quality controls on phantoms as well as advanced harmonized quantitative MRI protocols for studying the brain of healthy human participants and wild type mice. Under FAIR principles, a web-based e-infrastructure to store and share data across sites was also implemented (WP4). Finally, the RIN translated all these efforts into a large-scale multimodal data collection in patients and animal models with dementia (i.e., case study). The RIN-Neuroimaging Network can maximize the impact of public investments in research and clinical practice acquiring data across institutes and pathologies with high-quality and highly-consistent acquisition protocols, optimizing the analysis pipeline and data sharing procedures.},
-  langid = {english}
+  langid = {english},
+  doi = {10.3389/fneur.2022.855125}
 }
 
 @article{Oh2021-os,
@@ -773,7 +789,9 @@
   year = {2016},
   volume = {76},
   number = {5},
-  pages = {1478--1485}
+  pages = {1478--1485},
+  doi = {10.1002/mrm.26058},
+  journal = {Magnetic Resonance in Medicine}
 }
 
 @article{Perone2018-la,
@@ -828,7 +846,8 @@
   author = {Salluzzi, Marina and McCreary, Cheryl R and Gobbi, David G and Lauzon, Michel Louis and Frayne, Richard},
   year = {2022},
   month = oct,
-  journal = {Neuroimage},
+  journal = {NeuroImage},
+  doi = {10.1016/j.neuroimage.2022.119488},
   volume = {260},
   pages = {119488},
   abstract = {Quantitative imaging biomarkers (QIBs) can be defined as objective measures that are sensitive and specific to changes in tissue physiology. Provided the acquired QIBs are not affected by scanner changes, they could play an important role in disease diagnosis, prognosis, management, and treatment monitoring. The precision of selected QIBs was assessed from data collected on a 3-T scanner in four healthy participants over a 5-year period. Inevitable scanner changes and acquisition protocol revisions occurred during this time. Standard and custom processing pipelines were used to calculate regional brain volume, cortical thickness, T2, T2*, quantitative susceptibility, cerebral blood flow, axial, radial and mean diffusivity, peak width of skeletonized mean diffusivity, and fractional anisotropy from the acquired images. Coefficient of variation (CoV) and intra-class correlation (ICC) indices were determined in the short-term (i.e., repeatable over three acquisitions within 4 weeks) and in the long-term (i.e., reproducible over four acquisition sessions in 5 years). Precision indices varied based on acquisition technique, processing pipeline, and anatomical region. Good repeatability (average CoV=2.40\% and ICC=0.78) and reproducibility (average CoV=8.86 \% and ICC=0.72) were found over all QIBs. The best performance indices were obtained for diffusion derived biomarkers (CoV{$\sim$}0.96\% and ICCs=0.87); conversely, the poorest indices were found for the cerebral blood flow biomarker (CoV\textquestiondown 10\% and ICC\textexclamdown 0.5). These results demonstrate that changes in protocol, along with hardware and software upgrades, did not affect the estimates of the selected biomarkers and their precision. Further characterization of the QIB is necessary to understand meaningful changes in the biomarkers in longitudinal studies of normal brain aging and translation to clinical research.},
@@ -872,9 +891,10 @@
   author = {Seif, Maryam and Leutritz, Tobias and Schading, Simon and Emmengger, Tim and Curt, Armin and Weiskopf, Nikolaus and Freund, Patrick},
   year = {2022},
   month = dec,
-  journal = {Neuroimage},
+  journal = {NeuroImage},
   volume = {264},
   pages = {119751},
+  doi = {10.1016/j.neuroimage.2022.119751},
   abstract = {MRI based multicenter studies which target neurological pathologies affecting the spinal cord and brain \textendash{} including spinal cord injury (SCI) \textendash{} require standardized acquisition protocols and image processing methods. We have optimized and applied a multi-parameter mapping (MPM) protocol that simultaneously covers the brain and the cervical cord within a traveling heads study across six clinical centers (Leutritz et al., 2020). The MPM protocol includes quantitative maps (magnetization transfer saturation (MT), proton density (PD), longitudinal (R1), and effective transverse (R2*) relaxation rates) sensitive to myelination, water content, iron concentration, and morphometric measures, such as cross-sectional cord area. Previously, we assessed the repeatability and reproducibility of the brain MPM data acquired in the five healthy participants who underwent two scan-rescans (Leutritz et al., 2020). This study focuses on the cervical cord MPM data derived from the same acquisitions to determine its repeatability and reproducibility in the cervical cord. MPM matrices of the cervical cord were generated and processed using the hMRI and the spinal cord toolbox. To determine reliability of the cervical MPM data, the intra-site (i.e., scan-rescan) coefficient of variation (CoV), inter-site CoV, and bias within region of interests (C1, C2 and C3 levels) were determined. The range of the mean intra- and inter-site CoV of MT, R1 and PD was between 2.5\% and 12\%, and between 1.1\% and 4.0\% for the morphometric measures. In conclusion, the cervical MPM data showed a high repeatability and reproducibility for key imaging biomarkers and hence can be employed as a standardized tool in multi-center studies, including clinical trials.}
 }
 
@@ -888,7 +908,8 @@
   number = {16},
   pages = {16195--16210},
   abstract = {Understanding the microstructural changes related to physiological aging of the cerebral cortex is pivotal to differentiate healthy aging from neurodegenerative processes. The aim of this study was to investigate the age-related global changes of cortical microstructure and regional patterns using multiparametric quantitative MRI (qMRI) in healthy subjects with a wide age range. 40 healthy participants (age range: 2nd to 8th decade) underwent high-resolution qMRI including T1, PD as well as T2, T2* and T2' mapping at 3 Tesla. Cortical reconstruction was performed with the FreeSurfer toolbox, followed by tests for correlations between qMRI parameters and age. Cortical T1 values were negatively correlated with age (p=0.007) and there was a widespread age-related decrease of cortical T1 involving the frontal and the parietotemporal cortex, while T2 was correlated positively with age, both in frontoparietal areas and globally (p=0.004). Cortical T2' values showed the most widespread associations across the cortex and strongest correlation with age (r= -0.724, p=0.0001). PD and T2* did not correlate with age. Multiparametric qMRI allows to characterize cortical aging, unveiling parameter-specific patterns. Quantitative T2' mapping seems to be a promising imaging biomarker of cortical age-related changes, suggesting that global cortical iron deposition is a prominent process in healthy aging.},
-  langid = {english}
+  langid = {english},
+  doi = {10.18632/aging.103629}
 }
 
 @article{Smith2002-bn,
@@ -968,6 +989,7 @@
   journal = {Neuroimage},
   volume = {218},
   pages = {116889},
+  doi = {10.1016/j.neuroimage.2020.116889},
   abstract = {Diffusion MRI tractography processing pipeline requires a large number of steps (typically 20+ steps). If parameters of these steps, number of threads, and random seed generators are not carefully controlled, the resulting tractography can easily be non-reproducible and non-replicable, even in test-test experiments. To handle these issues, we developed TractoFlow. TractoFlow is fully automatic from raw diffusion weighted images to tractography. The pipeline also outputs classical diffusion tensor imaging measures and several fiber orientation distribution function measures. TractoFlow supports the recent Brain Imaging Data Structure (BIDS) format as input and is based on two engines: Nextflow and Singularity. In this work, the TractoFlow pipeline is evaluated on three databases and shown to be efficient and reproducible from 98\% to 100\%, depending on parameter choices. Moreover, it is easy to use for non-technical users, with little to no installation requirements. TractoFlow is publicly available for academic research and is an important step forward for better structural brain connectivity mapping.},
   langid = {english}
 }
@@ -1002,7 +1024,8 @@
   volume = {202},
   pages = {116137},
   abstract = {MRtrix3 is an open-source, cross-platform software package for medical image processing, analysis and visualisation, with a particular emphasis on the investigation of the brain using diffusion MRI. It is implemented using a fast, modular and flexible general-purpose code framework for image data access and manipulation, enabling efficient development of new applications, whilst retaining high computational performance and a consistent command-line interface between applications. In this article, we provide a high-level overview of the features of the MRtrix3 framework and general-purpose image processing applications provided with the software.},
-  langid = {english}
+  langid = {english},
+  doi = {10.1016/j.neuroimage.2019.116137}
 }
 
 @article{Ullmann2014-pn,
@@ -1014,7 +1037,8 @@
   volume = {2014},
   pages = {719520},
   abstract = {Context. MRI of the spinal cord provides a variety of biomarkers sensitive to white matter integrity and neuronal function. Current processing methods are based on manual labeling of vertebral levels, which is time consuming and prone to user bias. Although several methods for automatic labeling have been published; they are not robust towards image contrast or towards susceptibility-related artifacts. Methods. Intervertebral disks are detected from the 3D analysis of the intensity profile along the spine. The robustness of the disk detection is improved by using a template of vertebral distance, which was generated from a training dataset. The developed method has been validated using T1- and T2-weighted contrasts in ten healthy subjects and one patient with spinal cord injury. Results. Accuracy of vertebral labeling was 100\%. Mean absolute error was 2.1 {$\pm$} 1.7 mm for T2-weighted images and 2.3 {$\pm$} 1.6 mm for T1-weighted images. The vertebrae of the spinal cord injured patient were correctly labeled, despite the presence of artifacts caused by metallic implants. Discussion. We proposed a template-based method for robust labeling of vertebral levels along the whole spinal cord for T1- and T2-weighted contrasts. The method is freely available as part of the spinal cord toolbox.},
-  langid = {english}
+  langid = {english},
+  doi = {10.1155/2014/719520}
 }
 
 @article{Voelker2021-vi,
@@ -1026,7 +1050,8 @@
   volume = {232},
   pages = {117910},
   abstract = {OBJECT: This study evaluates inter-site and intra-site reproducibility at ten different 7 T sites for quantitative brain imaging. MATERIAL AND METHODS: Two subjects - termed the ``traveling heads'' - were imaged at ten different 7 T sites with a harmonized quantitative brain MR imaging protocol. In conjunction with the system calibration, MP2RAGE, QSM, CEST and multi-parametric mapping/relaxometry were examined. RESULTS: Quantitative measurements with MP2RAGE showed very high reproducibility across sites and subjects, and errors were in concordance with previous results and other field strengths. QSM had high inter-site reproducibility for relevant subcortical volumes. CEST imaging revealed systematic differences between the sites, but reproducibility was comparable to results in the literature. Relaxometry had also very high agreement between sites, but due to the high sensitivity, differences caused by different applications of the B1 calibration of the two RF coil types used were observed. CONCLUSION: Our results show that quantitative brain imaging can be performed with high reproducibility at 7 T and with similar reliability as found at 3 T for multicenter studies of the supratentorial brain.},
-  langid = {english}
+  langid = {english},
+  doi = {10.1016/j.neuroimage.2021.117910}
 }
 
 @article{Wang2017-ah,
@@ -1052,6 +1077,7 @@
   journal = {Scientific Reports},
   volume = {7},
   pages = {45261},
+  doi = {10.1038/srep45261},
   abstract = {Multi-center studies are advantageous for enrolling participants of varying pathological and demographical conditions, and especially in neurological studies. Hence stability of the obtained quantitative R2* and susceptibility in multicenter studies is a key issue for their widespread applications. In this work, the stabilities of simultaneously obtained R2* and susceptibility are investigated and compared across 10 sites that are equipped with the same scanner and receiver coil, the same post-processing process was used to achieve consistent experiment setup. Two healthy adult volunteers (one male and female) participated in this study. High intraclass correlation coefficient was obtained for both susceptibility (0.94) and R2* (0.96). The coefficients of variance for all measurements obtained were smaller than 0.1, the largest variations of measurements in all the chosen ROIs fall within {$\pm$}20\% from the median value. Higher level of stability was obtained in R2* as compared to susceptibility at 1 mm resolution (P \textexclamdown{} 0.05) and at 1.5 mm (P \textexclamdown{} 0.01).},
   langid = {english}
 }
@@ -1064,6 +1090,7 @@
   journal = {NeuroImage: Clinical},
   volume = {36},
   pages = {103228},
+  doi = {10.1016/j.nicl.2022.103228},
   abstract = {Introduction Quantitative microstructural MRI, such as myelin-sensitive magnetisation transfer ratio (MTR) or saturation (MTsat), axon-sensitive water diffusion Neurite Orientation Dispersion and Density Imaging (NODDI), and the aggregate g-ratio, may provide more specific markers of white matter integrity than conventional MRI for early patient stratification in relapsing-remitting multiple sclerosis (RRMS). The aim of this study was to determine the sensitivity of such markers to longitudinal pathological change within cerebral white matter lesions (WML) and normal-appearing white matter (NAWM) in recently diagnosed RRMS. Methods Seventy-nine people with recently diagnosed RRMS, from the FutureMS longitudinal cohort, were recruited to an extended MRI protocol at baseline and one year later. Twelve healthy volunteers received the same MRI protocol, repeated within two weeks. Ethics approval and written informed consent were obtained. 3T MRI included magnetisation transfer, and multi-shell diffusion-weighted imaging. NAWM and whole brain were segmented from 3D T1-weighted MPRAGE, and WML from T2-weighted FLAIR. MTR, MTsat, NODDI isotropic (ISOVF) and intracellular (ICVF) volume fractions, and g-ratio (calculated from MTsat and NODDI data) were measured within WML and NAWM. Brain parenchymal fraction (BPF) was also calculated. Longitudinal change in BPF and microstructural metrics was assessed with paired t-tests ({$\alpha$} = 0.05) and linear mixed models, adjusted for confounding factors with False Discovery Rate (FDR) correction for multiple comparisons. Longitudinal changes were compared with test-retest Bland-Altman limits of agreement from healthy control white matter. The influence of longitudinal change on g-ratio was explored through post-hoc analysis in silico by computing g-ratio with realistic simulated MTsat and NODDI values. Results In NAWM, g-ratio and ICVF increased, and MTsat decreased over one year (adjusted mean difference = 0.007, 0.005, and -0.057 respectively, all FDR-corrected p \textexclamdown{} 0.05). There was no significant change in MTR, ISOVF, or BPF. In WML, MTsat, NODDI ICVF and ISOVF increased over time (adjusted mean difference = 0.083, 0.024 and 0.016, respectively, all FDR-corrected p \textexclamdown{} 0.05). Group-level longitudinal changes exceeded test-retest limits of agreement for NODDI ISOVF and ICVF in WML only. In silico analysis showed g-ratio may increase due to a decrease in MTsat or ISOVF, or an increase in ICVF. Discussion G-ratio and MTsat changes in NAWM over one year may indicate subtle myelin loss in early RRMS, which were not apparent with BPF or NAWM MTR. Increases in NAWM and WML NODDI ICVF were not anticipated, and raise the possibility of axonal swelling or morphological change. Increases in WML MTsat may reflect myelin repair. Changes in NODDI ISOVF are more likely to reflect alterations in water content. Competing MTsat and ICVF changes may account for the absence of g-ratio change in WML. Longitudinal changes in microstructural measures are significant at a group level, however detection in individual patients in early RRMS is limited by technique reproducibility. Conclusion MTsat and g-ratio are more sensitive than MTR to early pathological changes in RRMS, but complex dependence of g-ratio on NODDI parameters limit the interpretation of aggregate measures in isolation. Improvements in technique reproducibility and validation of MRI biophysical models across a range of pathological tissue states are needed.}
 }
 
