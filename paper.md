@@ -75,3 +75,238 @@ Overall, the initial data release of the Courtois project on neural modeling (CN
 # Acknowledgements
 
 The Courtois project on neural modelling was made possible by a generous donation from the Courtois foundation. The Courtois NeuroMod team is based at “Centre de Recherche de l’Institut Universitaire de Gériatrie de Montréal”, with several other institutions involved. See the CNeuromod documentation for an up-to-date list of contributors (https://docs.cneuromod.ca). This study was also funded by the Canada Research Chair in Quantitative Magnetic Resonance Imaging [950-230815], the Canadian Institute of Health Research [CIHR FDN-143263], the Canada Foundation for Innovation [32454, 34824], the Fonds de Recherche du Québec - Santé [322736], the Natural Sciences and Engineering Research Council of Canada [RGPIN-2019-07244], the Canada First Research Excellence Fund (IVADO and TransMedTech), and the Mila - Tech Transfer Funding Program.
+
+
+ \awesomebox[red]{2pt}{\faExclamationCircle}{red}{\textbf{NOTE}}
+
+ > **_NOTE:_** The following section in this document repeats the narrative content exactly as                     found in the [corresponding NeuroLibre Reproducible Preprint (NRP)](https://preprint.neurolibre.org/10.55458/neurolibre.00018). The content was                     automatically incorporated into this PDF using the NeuroLibre publication workflow [@Karakuzu2022-nlwf] to                     credit the referenced resources. The submitting author of the preprint has verified and approved the                     inclusion of this section through a GitHub pull request made to the [source repository](https://github.com/courtois-neuromod/anat-processing-paper) from which this document was built.                     Please note that the figures and tables have been excluded from this (static) document. **To interactively explore such outputs and re-generate them, please visit the corresponding [NRP](https://preprint.neurolibre.org/10.55458/neurolibre.00018).**                     For more information on integrated research objects (e.g., NRPs) that bundle narrative and executable content for reproducible and transparent publications,                     please refer to @Dupre2022-iro. NeuroLibre is sponsored by the Canadian Open Neuroscience Platform (CONP) [@Harding2023-conp].
+
+Longitudinal stability of brain and spinal cord quantitative MRI measures
+
+
+Mathieu Boudreau1, Agah Karakuzu1, Arnaud Boré2,3, Basile Pinsard2,3, Kiril Zelenkovski4, Eva Alonso-Ortiz1,5, Julie Boyle2,3, Pierre Bellec2,3,6, Julien Cohen-Adad1,3,5,7
+
+
+1NeuroPoly, Polytechnique Montreal, Montreal, QC, Canada, 
+2Centre de Recherche de l’Institut Universitaire de Gériatrie de Montréal (CRIUGM), Montreal, QC, Canada
+3Unité de Neuroimagerie Fonctionnelle (UNF), Centre de Recherche de l’Institut Universitaire de Gériatrie de Montréal (CRIUGM), Montreal, QC, Canada
+4Faculty of Computer Science and Engineering (FINKI), Skopje, Macedonia
+5Centre de recherche du CHU Sainte-Justine, Université de Montréal, Montreal, QC, Canada
+6Psychology Department, Université de Montréal, Montreal, QC, Canada
+7Mila - Quebec AI Institute, Montreal, QC, Canada
+
+
+Abstract
+========
+
+
+Quantitative MRI (qMRI) promises better specificity, accuracy, and stability relative to its clinically-used qualitative MRI counterpart. Longitudinal stability is particularly important in qMRI. The goal is to reliably quantify tissue properties that may be assessed in longitudinal clinical studies throughout disease progression or during treatment. In this work, we present the initial data release of the quantitative MRI portion of the Courtois project on neural modelling (CNeuroMod), where the brain and cervical spinal cord of six participants were scanned at regular intervals over the course of several years. This first release includes three years of data collection and up to ten sessions per participant using quantitative MRI imaging protocols (T1, magnetization transfer (MTR, MTsat), and diffusion). Coefficient of variations (COV) over this timeframe ranged between 0.6% to 2.3% (intrasubject) and 0.4% to 3.5% (intersubject) for T1/MTR/MTsat in whole-brain white matter (WM), and between 0.6% to 1.3% (intrasubject) and 3.0% to 10.3% (intersubject) for diffusion FA/MD/RD in the three corpus callosum regions. In the spine, COVs ranged between 2.3% and 4.5% (intrasubject) and 5.1% to 9.7% (intersubject) for measured spine WM cross-sectional area (CSA) across the C2 and C3 vertebral levels, and between 3.9% to 9.5% (intrasubject) and 4.0% to 8.4% (intersubject) in WM across the C2 and C5 vertebral levels for all qMRI metrics (T1, MTR, MTsat, FA, MD, RD). Results from this work show the level of stability that can be expected from qMRI protocols in the brain and spinal cord, and could help in the design of future longitudinal clinical studies. 
+
+
+1     |     INTRODUCTION
+========================
+
+
+Quantitative MRI and the reproducibility crisis
+-----------------------------------------------
+
+
+Conventional MRI images used clinically stem from using the MRI machine as a non-invasive medical device and not as a scientific instrument [@Cercignani2018-ga; @Tofts1998-kr]. Medical images produced from clinical MRI protocols must be interpreted by expert readers to extract useful diagnostic information, as the images alone lack biological specificity and reproducibility, due to underlying changes in biology and the electromagnetic fields the imaging hardware generates. Quantitative MRI (qMRI) techniques [@Seiberlich2020-xe] aim to produce measurements of biological or physical properties through a series of carefully planned conventional MRI images. Quantitative maps are calculated or fit from these measured datasets, which have voxelwise values that typically have physical units associated with them, for example, spin-lattice relaxation time (T1 [s]), spin-spin relaxation time (T2 [s]), myelin water fraction (MWF [%]), magnetization transfer ratio (MTR [%]), cerebral blood flow (CBF [ml/g/min]) and diffusion (restricted diffusion coefficients [mm2/s], eg. mean diffusivity (MD) and radial diffusivity (RD)). Some qMRI techniques are highly specific to certain biological changes (eg, myelin loss [@Mancini2020-sv; @Schmierer2007-mb], cerebrovascular diseases and oxygen consumption disorders [@Davis1998-lr; @Ma2016-fo; @Mazerolle2018-xy; @Wang2017-yt], iron deficiency [@Liden2021-el; @Ropele2011-zl], etc.). Because these measures either implicitly or explicitly account for effects that typically are unaccounted for in clinical MRI images, in principle they should have improved stability – this is one of the hallmark-promising features of qMRI. However, in practice, the field has fallen short of living up to this high bar. Even fundamental quantitative MRI techniques have been shown to vary widely amongst methods and sites; for example, despite the fact that T1 mapping is the first quantitative MRI technique to have been developed 45 years ago [@Pykett1978-ef], modern T1 mapping techniques have not consistently shown good accuracy in measuring T1 values in the brain across different sites or techniques [@Stikov2015-gb]. A lot of work has been done recently to help quantify the accuracy and improve within-vendor stability of quantitative MR measurements, such as the development of quantitative MRI calibration phantoms [@Golay2022-zr; @Keenan2018-px; @Stupic2021-lj] and increasing integration of quantitative MRI pulse sequences as stock sequences on commercial scanners [@Ma2013-kv; @Marques2010-po; @Seiberlich2012-xi] or as vendor-neutral implementations [@Karakuzu2022-af; @Herz2021-pu].
+
+
+Stability in qMRI: why is it needed?
+------------------------------------
+
+
+The stability of a qMRI measurement is an important characteristic to consider when designing longitudinal studies, particularly when clinical features are expected to evolve over time (eg, worsening disease, or improvement through therapeutic intervention [@Oh2021-os]). It is also important to know the anticipated variability of these metrics to find the minimum detectable effect size in a power analysis while designing your study. Same-day test-retest studies have shown that fundamental qMRI metrics (eg, T1, T2) exhibit low intra-scanner variability in vivo (on the order of 1-2%) [@Gracien2020-js; @Lee2019-tn]. However, test-retest studies are limited in their usefulness as a stability measure because they only consist of two measurements (leading to improper standard deviation calculations) and are done during the same day (same scanner operator, same scanner conditions), which are not realistic conditions experienced during longitudinal studies. Longitudinal stability is thus important to quantify, but can be challenging due to the potential confounds from actual changes of the subject’s tissue properties over time, even from healthy volunteers. Quantitative MRI metrics in the brain have been shown to correlate with ageing through adulthood [@Erramuzpe2021-rw; @Seiler2020-na], although changes appear to happen slowly (over decades) and thus short-term longitudinal studies (eg, 3-5 years) should in principle quantify longitudinal stability reliably.
+
+
+Stability in (q)MRI: what’s been done
+-------------------------------------
+
+
+Many studies have investigated the stability of morphometrics and quantitative MRI measures. A recent landmark study investigated the longitudinal stability of clinical and functional MRI metrics of a single subject’s brain measured on multiple vendors at multiple sites over the course of 15 years (73 sessions across 36 scanners) [@Duchesne2019-ls], finding poor reproducibility across MRI manufacturers for key clinical metrics (ie., white/grey matter contrast-to-noise ratio (CNR), FLAIR white matter hyperintensities volume). For qMRI metrics, there are a few longitudinal studies that have probed different aspects of their longitudinal stability. A 7-year scan-rescan brain ageing study explored the evolution of quantitative T1 values in different tissues using the variable flip angle (VFA) technique (which depends on an additional B1 map) [@Gracien2017-un] and found T1 values were sensitive to ageing for this timespan. The stability of quantitative brain metrics when encountering MRI software and hardware upgrades was recently explored in a four time-point, seven-year repeatability and reproducibility study [@Salluzzi2022-jc], which reported the upgrades did not affect the effect size and stability of the tested MRI biomarkers. Stability has also been explored in non-brain anatomy. For spinal cord, inter-vendor variability was recently probed by a multi-center (19 sites) study using a generic quantitative MRI spinal cord imaging protocol [@Cohen-Adad2021-qo] on a single participant over the span of one year [@Cohen-Adad2020-qz]. A test-retest quantitative MRI spine study has also been performed in two cohorts (young adult and elderly) over a ten month period [@Levy2018-gt], with minimal detectable changes reported for T1, MTR, MTsat, and macromolecular tissue volume (MTV) quantitative MRI measures.
+
+
+Study Objective and the CNeuroMod Project
+-----------------------------------------
+
+
+The objective of this study was to measure and report the stability of quantitative microstructure MRI measurements across multiple time points in the brain and cervical spinal cord. To do this, two sets of qMRI protocols (brain and spinal cord) were integrated within the Courtois project on neural modelling (CNeuroMod)[^c-neuromod] for collecting longitudinal data on healthy subjects to train and improve artificial intelligence models on brain behaviour and activity. The qMRI measurements of the brain and spinal cord fell within the “anatomical” imaging branch of the CNeuroMod project, and additional branches of data acquired include deep scanning with functional MRI, biosignals (eg, cardiac, respiration, eye tracking), and magnetoencephalography (MEG). In addition, we developed reproducible and reusable analysis pipelines for structural qMRI of the brain and spinal cord. These pipelines are built using state-of-the-art tools in terms of pipeline management (NextFlow [@DiTommaso2017-qk]), structural data analyses (FSL [@Smith2004-oa], ANTs [@Avants2009-ox], qMRLab [@Cabana2015-zg; @Karakuzu2020-ul], SCT [@DeLeener2017-yq], etc.) and Jupyter notebooks [@Beg2021-ps] with Plotly (Plotly Technologies Inc., 2015) for presenting curated and interactive results.
+
+
+2     |     RESULTS
+===================
+
+
+Six participants were repeatedly scanned on a 3T MRI scanner (Prisma Fit, Siemens, Erlangen, Germany) approximately four times a year (up to ten times for this initial 2022 data release, with more scans regularly being acquired). Custom headcases (Caseforge, Berkeley, USA) were used for each participant to minimise movements during the imaging sessions. Two sets of imaging protocols were acquired (Figure 1), one for the brain (T1w, T2w, MP2RAGE, MTsat, B1+, and diffusion) and one for the spinal cord (T1w, T2w, MTsat, and diffusion).
+
+
+FIGURE 1 Overview of the structural dataset for the Courtois project on neural modelling (CNeuroMod). 6 participants were scanned up to ten times over three years; note that this is an initial data release for 2022, and more scans are regularly being acquired. The structural protocol consists of T1w, T2w and T2\*w scans to quantify brain and SC (including grey matter, GM) morphometry, and MP2RAGE, magnetization transfer (MTR and MTsat), and diffusion-weighted sequences to compute metrics sensitive to demyelination in the white matter (WM).
+
+
+2.1     |     Brain
+-------------------
+
+
+Average quantitative MRI (excluding diffusion) values for the segmented whole-brain white matter (WM) and grey matter (GM) for each subject and session are shown in Figure 2. Missing data points are either unacquired sessions or because they were excluded after doing quality control, more details are listed in the “Quality Control” section. Note that MTR is calculated from a subset of the MTsat measurements, and B1 is not shown because it is only used as a transmit radiofrequency (RF) field correction factor for the MTsat measurement, and does not have biological specificity.
+
+
+FIGURE 2 Brain qMRI metrics (excluding diffusion). Each point represents the mean metric within the WM or GM for one subject and one session. Missing data points are due to unacquired sessions, the pipelines failing to produce an output, or were excluded due to quality control (see Quality Control section for more details). The intra- and inter- subject COVs for these metrics in WM and GM are shown inside each respective plot. Note: subject 4 stopped participating after their fifth session for reasons out of our control.
+
+
+From Figure 2, it is evident that mean T1 values measured with the MP2RAGE pulse sequence (calculated from 2 images) generally showed less intrasubject variation than T1 values measured with MTsat (calculated from five images: three for MTsat calculation and two for B1 calculation). Intrasubject COV means for WM T1 measured using MP2RAGE was 0.6 %, which is four times lower than for T1 measured using MTsat. Intrasubject COVs for WM MTR (calculated from two images) were similar to those from MP2RAGE, and three times lower than MTsat (MTR is a subset of MTsat measurements, with two out of the five MTsat measurements being shared). Intrasubject COV standard deviations (STD) (not displayed in figure [^cov]) were low for all metrics in WM (< 1%). Intersubject mean COV was highest for WM T1 calculated from MTsat at 3.5%, and lowest for MTR at 0.4 %. GM intrasubject and intersubject COVs followed similar trends to those for WM, with the same order of magnitude COV mean and STD values. The very low intrasubject COVs and larger intersubject COV for T1 (MP2RAGE) is also expressed as each subject having specific mean whole-brain WM and GM T1 values distinct from each other, and that these values were stable longitudinally (Figure 2); this can also be seen to a lesser extent for T1 (MTsat) and MTsat, but not for MTR which had intrasubject COVs on the order or higher than the intersubject COVs.
+
+
+FIGURE 3 The mean diffusion metrics (FA, MD, and RD) for each acquired session are shown for three atlas-based regions of the corpus callosum (genu in blue, body in yellow, splenium in green) of each subject.
+
+
+Figure 3 displays the three calculated diffusion metrics (fractional anisotropy: FA, mean diffusivity: MD, and radial diffusivity: RD) within the three corpus callosum regions (genu, body, splenium). All three metrics exhibited high intersubject mean COVs (> 3%) and low intrasubject COV means (< 1.3%). The lowest intrasubject COV means are reported for FA in the body and splenium (0.6%), and the lowest intersubject mean COV was reported in the body and splenium for MD (3.0% and 3.1%, respectively). Intrasubject COV standard deviations (STD) (not displayed in figure) were low for all metrics and regions (< 0.6%), and FA in the splenium had the lowest value (0.1%). The substantially higher intersubject mean COVs than intrasubject mean COVs also indicates, like for the T1 (MP2RAGE) earlier, that each subject and region had specific diffusion metric values which were distinct from each other and were relatively stable as can be seen in Figure 3.
+
+
+2.2     |     Spinal cord
+-------------------------
+
+
+Figure 4 displays the results for the spinal cord cross-sectional area calculated for WM (using T1w and T2w images) and GM (using T2*w images). WM cross-sectional area (CSA) across the C2 and C3 vertebral levels calculated with T2w images resulted in intrasubject COVs of 2.3%, half of that found using T1w images (4.5%). For intersubject COVs, the trend is inverted; T2w had nearly double the intersubject COVs value (9.1 %) than T1w (5.2 %). The intrasubject standard deviations were on the order of the means (3.3% for WM using T1w, 1.7% for WM using T2w, and 10.4% for GM using T2*w). We notice a particularly high COV for CSA (WM, T1w) for subject 2, which is due to high subject motion, resulting in unreliable spinal cord segmentation. In order to avoid rater bias in the intra- and inter-subject statistics, the analysis pipeline was fully automated, and no mask was manually edited.
+
+
+FIGURE 4 Spinal cord cross-sectional area (CSA) for each acquired subject and session in WM (using either the T1w or T2w images) and in GM (using the T2\*w images).
+
+
+Figure 5 shows the scatter plots of all qMRI metric means calculated in the WM across the C2 and C5 vertebral levels of the spinal cord. As also observed in the brain, MTR resulted in lower intrasubject COV means (5.1%) than MTsat (7.9%, which is a superset of the MTR measurements plus one additional no-MT SPGR measurement and a B1 map). T1 had the better mean intersubject COV (7.9%) relative to its two concomitant metrics (MTR - 4.6%, MTsat - 4.0 %), demonstrating unique mean quantitative T1 values in WM for the set of subjects for this timeframe. For diffusion, FA resulted in the lowest intrasubject COV means (3.9%), and MD and RD were substantially higher (5-9%) in contrast to the observations in the brain (0.6-1.3%).
+
+
+FIGURE 5 Spinal cord qMRI metrics (T1, MTR, MTsat, FA, MD, RD). Each point represents the mean metric within the WM across C2 and C5 levels, for one subject and one session.
+
+
+3     |     DISCUSSION
+======================
+
+
+Longitudinal stability of quantitative MRI measures is an important feature for clinical and research studies that intend to use the MRI scanner as a scientific instrument. Here, we report on the stability of a fundamental MR parameter (T1) and of microstructural biomarkers (MTR, MTsat, diffusion) in the central nervous system (brain and spinal cord) over the course of three years at a single imaging site. The concept of the “stability” of quantitative MR measures must be considered carefully; long-term biological changes in brain tissue also occur naturally in healthy people due to macro- and microstructural effects associated with normal ageing [@MacDonald2021-uc]. Because this study was limited to three years and only investigated adults in mid-adulthood (ages 31 to 47 at initial scan date), the naturally-occurring effects of ageing in the brain (eg, myelin generation/degradation, ventricular enlargement, etc) are expected to occur slowly during this timespan [@Ge2002-fz; @Hagiwara2021-bz; @Steen1995-se]. The results of this initial data release, which can be made available upon request, may be used as a benchmark for the development of other analytical methods, as has been done using other large MRI data studies [@Cohen-Adad2021-so; @Seif2022-xg]. This work is also a small piece of a larger ongoing project, CNeuroMod, and this long-term database of quantitative MRI measurements may be valuable information to incorporate in deep learning training models of other longitudinal measurements (eg, fMRI, MEG) to account for confounding changes in the brains of these subjects.
+
+
+Stability of qMRI measures
+--------------------------
+
+
+The reported intrasubject COV means indicate good stability of all quantitative metrics measured in the brain (< 2.3 % in WM, < 3.1 % in GM) throughout the ten structural sessions acquired over three years. Several metrics (T1 (MP2RAGE) and MTsat in Figure 2 and FA/MD/RD in Figure 3), also had higher intersubject mean COVs than intrasubject COV means, which suggests that the quantitative metrics were specific to the individuals and are stable enough to monitor longitudinal differences. The qMRI metrics that exhibited the lowest intrasubject COVs (MTR and T1 (MP2RAGE)) were also the metrics that used the lowest number of raw MRI images to calculate the metrics (MTR and MP2RAGE only need two, versus whereasMTsat and T1 (MTsat) need three), suggesting that quantitative MRI metric stability may degrade if they need substantially more measurements than simpler alternatives (MTR and T1 (MP2RAGE), calculated from two images). Another potential reason for the improved stability is that MP2RAGE is inherently optimised to reduce sensitivity of B1 effects [@Marques2010-po], and future work should explore if quantitative techniques with good robustness against field inhomogeneities provide better long term stability than techniques necessitating additional measurements to correct for these effects. The longitudinal stability of a different implementation of T1 mapping (variable flip angle: VFA, which uses two measurements plus a B1 map) was reported in a healthy cohort at two timepoints acquired seven years apart [@Gracien2017-un]. Good stability was reported in WM T1 values, as well as a decrease in T1 values in cortical GM, the magnitude of which was proportional to the subject’s age. The age range of the study was 51-77 at the initial time point, thus a higher overall cohort age than the CNeuroMod cohort. Another recent longitudinal study [@York2022-fl] investigated the longitudinal trends of quantitative MRI myelin measures (MTR, MTsat, and diffusion) in a cohort of both healthy and MS patients, and found that MTsat was more sensitive to subtle changes in normal appearing white matter (NAWM) than MTR. However, only the MS cohort was investigated longitudinally over one year; the healthy cohort was a scan-rescan over two weeks. The longitudinal stability measures we reported in a healthy cohort (and in particular our open-source datasets) could be used to further support studies such as this one. In recent months, another longitudinal study [@Salluzzi2022-jc] investigated the short-term repeatability and long-term reproducibility in a healthy cohort over a 5 year interval with a different set of quantitative MRI metrics (T2/T2\*, quantitative susceptibility, cerebral blood flow, and diffusivity). Their work, though investigating mostly different metrics, is complementary to our study in that its main objective was to assess the potential impacts of both software and hardware MRI upgrades on the repeatability and reproducibility of this set of qMRI metrics. They reported intrasubject COVs on the order of 1% or less for diffusion metrics (FA/MD/RD) in the three corpus callosum regions, in agreement with the observations reported in our study.
+
+
+Spinal cord CSA had an intrasubject COV mean of 4.5 % and 2.3 % for CSA calculated from T1w and T2w scans, respectively. The almost twice smaller intrasubject COV for CSA computed on the T2w scan is likely due to the higher robustness to subject motion and/or spinal cord pulsatile motion for the T2w fast spin echo sequence vs. the T1w MPRAGE. This is consistent with a recent study [@Bautin2021-dt], where intrasubject CSA COVs where 0.8% for T1w images and 0.57% for T2w images. Note that the @Bautin2021-dt study was based on in-silico generation of scan-rescan using random affine transformations, hence the variability was highly under-estimated compared to the present study. In the present study, the reported COVs are likely closer to a realistic longitudinal scenario and suggest good long term stability for this quantitative metric in the spinal cord, and that T2w is the better choice for CSA quantification stability. In another related multi-site and multi-manufacturer study [@Cohen-Adad2021-so], were one subject was scanned in 19 different imaging centers over a period of 77 days,, they reported intra-site COVs for MTR and MTsat were below 3.6% and 11% respectively, on the order of our reported longitudinally measured values (5.1% and 7.9%). Intrasite FA COVs were reported on the order of or below 5.9%, higher than our mean longitudinal intrasubject COV value of 3.9%. These overall agreements between a multi-center snapshot in time and a single-centre longitudinal study provide encouraging evidence for the longitudinal stability when imaging the spinal cord.
+
+
+Limitations
+-----------
+
+
+Some limitations related to this study are important to highlight. Foremost, all measurements in this work were done on a single MRI scanner, and thus a single MRI vendor. Recent work [@Cohen-Adad2021-qo; @Cohen-Adad2021-so] done in the spinal cord suggests that while quantitative MR values differ across vendors, the COVs compare well. Multi-vendor harmonisation can only go so far; key differences in proprietary vendor pulse sequence implementations will always introduce differences out of the control of the user-researchers. However there is a lot of recent work on open-source pulse sequence frameworks [@Cordes2020-vz; @Karakuzu2022-af; @Layton2017-qz] aiming to minimise these differences and give more control to the user researchers that may provide a solution to this limitation. Alternatively, inter-vendor biases can be accounted for in the statistics analysis step [@Hagiwara2019-pg], or by using a standard system phantom [@Keenan2021-ly]. Our work reported on the longitudinal stability of mostly coarse regions-of-interest in the brain and spinal cord (whole-brain WM and GM mean values, in-plane WM and GM spinal cord means), except for the brain diffusion metrics which were averaged for the three corpus callosum regions (as was similarly done in [@Salluzzi2022-jc]). More granular masking methods exist for both the brain and spinal cord (eg. white & grey matter [@Desikan2006-jc; @Levy2015-tt; @Oishi2009-nj]), tractometry [@Catani2008-jw]), and may be explored in the future. Another important point is that the processing pipelines were all only automatic, and no manual interventions were done during the segmentation steps of the pipeline. Manual corrections or more robust tools would likely improve the reliability of the reported metrics in both brain and spinal cord. Although outside of the scope of this current study, the stability of quantitative morphometry in the brain (eg. cortical thickness) could also be explored and compared against the quantitative MRI metrics using this open dataset. 
+
+
+4     |     METHODS
+===================
+
+
+Data acquisition
+----------------
+
+
+Six healthy participants (three females) were recruited in 2018 (aged 31 to 47 at initial scan date) and consented to be scanned regularly as part of the on-going CNeuroMod project [@Boyle2020-vv]. The anatomical imaging protocol is run on each participant at a rate of approximately four times / year, for three years for this initial 2022 data release; more scans are regularly being acquired as the CNeuroMod project is ongoing. The participation of the subject labelled number 4 was unable to continue participating after their fifth session, and other participants occasionally were unable to attend their scheduled scans thus the total number of scans per participant varied. Each subject had the following number of scans at the time of data processing: subject 1 – 8 scans, subject 2 – 10 scans, subject 3 – 10 scans, subject 4 – 5 scans, subject 5 – 8 scans, subject 6 – 9 scans. All imaging sessions were performed at the same site on a 3.0 T whole-body MRI scanner (Prisma Fit, Siemens, Erlangen, Germany) with a 64-channel head/neck receive coil and 2-channel body transmit coil. Custom headcases (Caseforge, Berkeley, USA) were used for each participant to minimise movements during the imaging sessions; inter-scan motion is particularly important to be minimised for quantitative MRI as the actual fields in the imaging volume change with different anatomical positioning and cannot be easily corrected for using image registration techniques [@Balbastre2022-dm; @Papp2016-mz]. Up to ten imaging sessions were acquired in total, and the same imaging protocol was used for each subject and session. Two sets of imaging protocols were implemented, one for the brain and one for the spinal cord, the details of which are summarised next, but are also documented on the CNeuroMod project documentation [^neurodocs], including the Siemens MRI exam card PDFs exported from the scanner [^scanner].
+
+
+### Brain imaging protocol
+
+
+The brain imaging protocol (Figure 1, top) consisted of the following set of MRI measurements: T1-weighted, T2-weighted, diffusion, MP2RAGE, B1 mapping, and magnetization transfer (MT) saturation. The T1-weighted image consisted of a 3D MPRAGE acquisition using a repetition time (TR) = 2.4 s, echo time (TE) = 2.2 ms, excitation flip angle (FA) = 8 deg, 0.8 mm isotropic resolution, and parallel imaging acceleration factor (R) = 2. The T2-weighted pulse sequence was a 3D fast spin-echo (FSE) acquisition with TR = 3.2 s, TE = 563 ms, 0.8 mm isotropic resolution, and R = 2. The diffusion-weighted protocol used a 2D axial EPI sequence (TR = 2.3 s, TE = 82 ms, FA = 78 deg, 2 mm3 isotropic resolution, simultaneous multi-slice (SMS) factor of 3, two-shells, minimum b-value = 1500 s/mm2, maximum b-value = 3000 s/mm2), and was acquired twice using either P-A or A-P phase-encoding directions, to correct for susceptibility-induced distortion. The MP2RAGE 3D protocol produced two images with different inversion times (TI) = 700 ms and 1500 ms, TR = 4s, TE = 1.51 ms FA = 7 deg and 5 deg for each TI respectively, 1.2 mm isotropic resolution, and R = 2. B1 maps were acquired using the default Siemens B1 mapping sequence based on a gradient echo sequence with ultrafast turbo-FLASH readout (6mm isotropic resolution) [@Chung2010-nc]. Lastly, the MT saturation protocol consists of a set of three 3D spoiled gradient echo images: an MT-weighted (MTw) image (TR = 28 ms, TE = 3.3 ms, FA = 6 deg, 1.5 mm isotropic resolution, R = 2, and a Gaussian-shaped MT preparation pulse with an off-resonance frequency = 1.2 kHz), a proton-density-weighted (PDw) image (same protocol as the MTw, with the omission of the MT preparation pulse), and a T1-weighted (T1w) image (same protocol as the PDw, except TR = 18 ms and FA = 20 deg).
+
+
+### Spinal cord imaging protocol
+
+
+The spinal cord imaging protocol (Figure 1, bottom) consisted of the following set of MRI measurements: T1-weighted, T2-weighted, diffusion, and magnetization transfer (MT) saturation. The T1-weighted image consisted of a 3D MPRAGE acquisition with TR = 2 s, TE = 3.72 ms, FA = 9 deg, 1 mm isotropic resolution, and R = 2. The T2-weighted pulse sequence was a 3D fast spin-echo (FSE) acquisition with TR = 1.5 s, TE = 120 ms, FA = 120 deg, 0.8 mm isotropic resolution, and R = 3. The diffusion-weighted protocol used a 2D axial EPI sequence that was cardiac-gated with a pulse oximeter and TR ~ 620 ms, TE = 60 ms, 0.9 mm in-plane resolution, 5 mm slice resolution, phase encoding in the A-P direction, and a maximum b-value of 800 s/mm2). Lastly, the MT saturation protocol consisted of an MTw acquisition (TR = 35 ms, TE = 3.13 ms, FA = 9 deg, 0.9 mm2 in-plane resolution, 0.5 mm slice resolution, R = 2, and a Gaussian-shaped MT preparation pulse with an off-resonance frequency = 1.2 kHz), a proton-density-weighted (PDw) image (same protocol as the MTw, with the omission of the MT preparation pulse), and a T1-weighted (T1w) image (same protocol as the PDw, except TR = 15 ms and FA = 15 deg).
+
+
+Data preparation
+----------------
+
+
+All datasets acquired within the CNeuroMod project were prepared with the intention to be shared. Data were anonymized and defaced by masking out face, teeth, and ears. Datasets were prepared and organised in the BIDS (Brain Imaging Data Structure) format [@Gorgolewski2016-xt]. Quantitative image acquisitions were prepared according to the BEP001 specification [@Karakuzu2022-dq], and spinal cord data used the “bp-cspine” tag as proposed in BEP025 to distinguish against the brain datasets for the same subject. Datasets were managed using Datalad [@Halchenko2021-wz] and git-annex in a databank; access to this databank is made available through the CNeuroMod website [^fn5]. Session numbers in the database that are missing for some subjects are omitted datasets from scanning sessions that were aborted due to various scanning issues. sMRIprep [@Esteban2022-pi] was executed on the T1w brain scans from the first two sessions of each subject, which were later published on GitHub using git-annex as part of the CNeuroMod project. These outputs were used solely for the brain diffusion pipeline.
+
+
+Analysis pipeline
+-----------------
+
+
+Two separate post-processing and analysis pipelines were developed for the brain and spinal cord data. Figure 6 shows an overview of both pipelines with the outcome metrics.
+
+
+The brain pipelines were managed using Nextflow [@DiTommaso2017-qk], a container management tool for data processing pipelines. Two Docker container images were prebuilt and used for this pipeline: `dockerhub.io/qmrlab/antsfl:latest` (digest: `597de3e6e1aa`) and `dockerhub.io/qmrlab/minimal:v2.5.0b` (digest: `40270330e7b5`). Image registration was performed using the Advanced Normalization Tools (ANTS; `version 2.1.0`) [@Avants2009-ox]. Brain extraction was done using the brain extraction tool (BET) tool in the FMRIB Software Library (FSL; `version 5.0`) [@Smith2002-bn; @Smith2004-oa], and whole-brain WM and GM segmentation were done using the FMRIB's Automated Segmentation Tool (FAST) in FSL [@Zhang2001-rn]. With the exception of diffusion, for all quantitative MRI methods the core data fitting algorithms used in this pipeline are from the open-source qMRLab software (version tag `2.5.0b`) [@Cabana2015-zg; @Karakuzu2020-ul]. For diffusion, the TractoFlow pipeline (`version 2.4.1`) was used [@Theaud2020-mu], which uses DIPY [@Garyfallidis2014-gu] and MRtrix3 [@Tournier2019-gb] for the core diffusion processing functionalities, and FSL and ANTs for the image processing tools. The diffusion pipeline consists of a denoising step (MRtrix3), TOPUP (using the two phase encoding directions diffusion images) and eddy current corrections (FSL), DTIs (DIPY), brain tissue segmentation (ANTs), and lastly tractography maps [@Cousineau2017-ce]; the full processing diagram is shown in Figure 6. DTI metrics were calculated using the 1500 s/mm2 b-value shell. In addition to the diffusion images as inputs, TractoFlow also used the average of the T1w structural images of the first two sessions (for each subject) that was registered to the MNI152 atlas, which is the output of another standard pipeline, sMRIprep [@Esteban2022-pi], that consists [^fn6] of intensity non-uniformity corrections, alignment and fusion of the images, skull stripping, and non-linear registration to the template. The three regions-of-interests (ROIs) of the corpus callosum (genu/body/splenium) were extracted using the John Hopkins University ICBM-DTI-81 WM labels provided by FSL. The labels were first transformed from MNI152 space to the average T1w space (with transformations files available from the sMRIprep outputs [^fn7]), and then from the average T1w space to the diffusion space using the affine matrix files provided as outputs of TractoFlow.
+
+
+For the spinal cord data, the pipeline was developed in a shell script [^fn8] using all tools available through the Spinal Cord Toolbox (SCT) `v5.6` [@DeLeener2017-yq]. The script was run through all the available subjects and sessions using the pipeline management tool `sct_run_batch`. The SC was segmented on T2w images using `sct_deepseg_sc` [@Gros2019-ss], then vertebral levels were identified [@Ullmann2014-pn]. The SC was then registered to the adult PAM50 template [@DeLeener2018-yb]. T1w images were analysed similarly: the SC was segmented and then registered to the PAM50 template using the transformation T2w-PAM50 calculated earlier. The ME-GRE images were analysed using `sct_deepseg_gm` [@Perone2018-la] to segment the grey matter. MT images were processed as follows. The SC was segmented on the GRE-MT1 scan, followed by registration to the PAM50 template via the T2w-PAM50 transformation. GRE-MT0 and GRE-T1w scans were then registered to the GRE-MT1 scans. Magnetization transfer ratio (MTR) and MTsat were computed. DWI images were motion-corrected using a mask centred around the SC for more robustness, then registered to the PAM50 template using the initial transformation. DTI metrics were computed using `sct_compute_dti` (powered by DIPY [@Garyfallidis2014-gu]).
+
+
+The computed metrics are as follows: SC CSA averaged between C2-C3 levels from the T1w and T2w scans (using sct\_process\_segmentation), GM CSA averaged between C3-C4 from the ME-GRE scan, MTR, MTsat, T1 and DTI metrics extracted in the WM between levels C2-C5.
+
+
+FIGURE 6 Overview of the three analysis pipelines used in this project: qMRLab (top row), Tractoflow (middle row), Spinal Cord Toolbox (bottom row). The human datasets were processed using NextFlow-based pipelines (qMRLab for qMRI processing, and Tractoflow for diffusion processing), whereas spine datasets used a bash script-based pipeline using the Spinal Cord Toolbox software.
+
+
+Quality control
+---------------
+
+
+For brain qMRI data processing (excluding diffusion), quality assurance was done manually with the assistance of the Nextflow log, which provides a report on success/failure of each processing step for all subjects and sessions. The resulting maps and masks were also visually verified manually, which resulted in some subsequent corrections to how the tissue masks were calculated [^fn9] and the removal of parts of the MTsat acquisition volume due to slab profile effects [^fn10]. Five data points were omitted due to missing B1 maps in the CNeuroMod database at the time of processing for these subject’s sessions: `sub-03_ses-003, sub-06_ses-001, sub-06_ses-002, sub-06_ses-003, sub-06_ses-005`.
+
+
+For brain diffusion data processing, a report was generated from the TractoFlow tool dmriqc\_flow (`v0.2.0` - [@Theaud2022-gu]). Each step of the pipeline has been manually validated without any reported issues. Two sessions were excluded due to corrupted initial acquisitions (`sub-03_ses-002, sub-03_ses-003`). For the spinal cord data processing pipeline, a QC report showing various steps of the analysis (segmentation, vertebral labelling, registration) was generated and made publicly available on the [GitHub project repository](https://github.com/courtois-neuromod/anat-processing), release version `r20220804`). Following expert readings, some data points were excluded due to factors such as excessive motion (`sub-05_ses-007` [T2w]), poor shimming (`sub-03_ses-010` [T1w] and `sub-05_ses-007` [T1w]), and incorrect volume placement or incorrect b-values (`sub-02_ses-001` [DWI], `sub-03_ses-003` [DWI], `sub-06_ses-008`): details are listed in [GitHub issues](https://github.com/courtois-neuromod/anat-processing/issues). In addition, the pipeline failed to produce an output for two data points (`sub-04_ses-001, sub-06_ses-005`). 
+
+
+ACKNOWLEDGEMENT
+===============
+
+
+The Courtois project on neural modelling was made possible by a generous donation from the Courtois foundation. The Courtois NeuroMod team is based at “Centre de Recherche de l’Institut Universitaire de Gériatrie de Montréal”, with several other institutions involved. See the CNeuromod documentation for an up-to-date list of contributors (https://docs.cneuromod.ca). This study was also funded by the Canada Research Chair in Quantitative Magnetic Resonance Imaging [950-230815], the Canadian Institute of Health Research [CIHR FDN-143263], the Canada Foundation for Innovation [32454, 34824], the Fonds de Recherche du Québec - Santé [322736], the Natural Sciences and Engineering Research Council of Canada [RGPIN-2019-07244], the Canada First Research Excellence Fund (IVADO and TransMedTech), and the Mila - Tech Transfer Funding Program.
+
+
+DATA AVAILABILITY STATEMENT
+===========================
+
+
+In the aim of better reproducibility and transparency in research, all the data, processing pipelines, containers, and analysis code have been made available online. The anonymized and defaced datasets are in BIDS format and managed using Datalad and git-annex in a GitHub repository, https://github.com/courtois-neuromod/anat (commit: 5a5f687), and the data itself is hosted on an self-hosted S3 server. The sMRIPrep pipeline outputs for each subjects are also managed using git-annex and GitHub, https://github.com/courtois-neuromod/anat.smriprep (commit: b055f52). To request access to this data, we invite researchers to fill out an application form on our website https://www.cneuromod.ca/access/access/. The brain quantitative MRI processing pipeline was written in Nextflow (brain) and shell (spine) and are available in this repository: https://github.com/courtois-neuromod/anat-processing. The TractoFlow pipeline is built using open-source tools and is available on GitHub: https://github.com/scilus/tractoflow combined with the container image on Dockerhub: dockerhub.io/scilus/scilus:1.4.2 (digest: 25415e45ea7f, https://hub.docker.com/repository/docker/scilus/scilus) . The qMRI brain pipeline used two Docker containers which have been made available as saved container images on Dockerhub: dockerhub.io/qmrlab/antsfl:latest (digest: 597de3e6e1aa, https://hub.docker.com/repository/docker/qmrlab/antsfsl) and dockerhub.io/qmrlab/minimal:​​v2.5.0b (digest: 40270330e7b5, https://hub.docker.com/repository/docker/qmrlab/minimal)). The condensed outputs of these pipelines (eg, masked and averaged values for each tissue) are shared in GitHub releases of this repository, which can be found here: https://github.com/courtois-neuromod/anat-processing/releases/. The data figures and tables in this article were produced using analysis code integrated in an interactive Jupyter Book and powered by Plotly, which is available here, https://courtois-neuromod.github.io/anat-processing-paper/, and the code repository for this book is https://github.com/courtois-neuromod/anat-processing-paper.
+
+
+[^c-neuromod]: Please see <https://www.cneuromod.ca>.
+
+
+[^cov]: Standard deviation values of the intrasubject COVs are reported in the interactive figures.
+
+
+[^neurodocs]: [Brain anatomical sequences](https://docs.cneuromod.ca/en/latest/MRI.html#brain-anatomical-sequences)
+
+
+[^scanner]: [Anatomical protocol PDF](https://docs.cneuromod.ca/en/latest/_downloads/4f1f285d300373cc60a45d4085097bad/anatomical_protocol_2019-01-22.pdf)
+
+
+[^fn5]: [Neuromod data access](https://www.cneuromod.ca/access/access)
+
+
+[^fn6]: The pipeline diagram for the external tool sMRIprep is available in their [documentation](https://www.nipreps.org/smriprep)
+
+
+[^fn7]: [Neuromod sMRIprep](https://github.com/courtois-neuromod/anat.smriprep.git)
+
+
+[^fn8]: [Neuromod process spinal cord data](https://github.com/courtois-neuromod/anat-processing/blob/main/process_spinalcord.sh)
+
+
+[^fn9]: [Release r20220916](https://github.com/courtois-neuromod/anat-processing/releases/tag/r20220916)
+
+
+[^fn10]: [Release r20220921](https://github.com/courtois-neuromod/anat-processing/releases/tag/r20220921)
+
+
+
+# References
+
